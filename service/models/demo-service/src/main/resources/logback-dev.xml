@@ -10,7 +10,7 @@
     </Console>
 
     <!--配置自定义日志，按天输出-->
-    <RollingFile name="logback" fileName="./service/log/demo.log" filePattern="./service/log/demo-%d{yyyy-MM-dd}.log" >
+    <RollingFile name="logback" fileName="./service/models/demo-service/log/demo.log" filePattern="./service/models/demo-service//log/demo-%d{yyyy-MM-dd}.log" >
       <PatternLayout pattern="%d{yyyy.MM.dd HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n"/>
       <Policies>
         <TimeBasedTriggeringPolicy />
@@ -18,7 +18,7 @@
     </RollingFile>
 
     <!-- 把系统所有的error全部打到这个文件里  -->
-    <File name="error" fileName="./service/log/error.log">
+    <File name="error" fileName="./service/models/demo-service/log/error.log">
       <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
       <PatternLayout pattern="%d{yyyy.MM.dd HH:mm:ss z} %-5level %class{36} %L %M - %msg%xEx%n"/>
     </File>

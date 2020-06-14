@@ -1,5 +1,6 @@
 package com.demo.service.impl;
 
+
 import com.demo.dao.UserMapper;
 import com.demo.domain.param.UserParam;
 import com.demo.service.DemoService;
@@ -20,7 +21,7 @@ public class DemoServiceImpl implements DemoService {
   private UserMapper userMapper;
 
   @Override
-  public void addSomeone() {
+  public void addSomeone()  {
 
     UserParam userParam = new UserParam().setName("1").setAge(1);
     userMapper.insertIntoUser(userParam);
