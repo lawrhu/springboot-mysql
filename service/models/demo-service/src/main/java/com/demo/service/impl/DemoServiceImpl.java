@@ -1,11 +1,14 @@
 package com.demo.service.impl;
 
 
+import static com.utils.StateCodeEnum.SUCCESS;
+
 import com.demo.dao.UserMapper;
-import com.demo.domain.param.UserParam;
 import com.demo.service.DemoService;
+import com.exception.CommonException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 /**
@@ -23,8 +26,9 @@ public class DemoServiceImpl implements DemoService {
   @Override
   public void addSomeone()  {
 
-    UserParam userParam = new UserParam().setName("1").setAge(1);
-    userMapper.insertIntoUser(userParam);
+//    UserParam userParam = new UserParam().setName("1").setAge(1);
+//    userMapper.insertIntoUser(userParam);
 
+    throw new CommonException(HttpStatus.OK, SUCCESS.getCode(),"asdf");
   }
 }

@@ -1,6 +1,6 @@
 package com.exception;
 
-import lombok.NoArgsConstructor;
+import com.utils.StateCodeEnum;
 import org.springframework.http.HttpStatus;
 
 /**
@@ -8,43 +8,59 @@ import org.springframework.http.HttpStatus;
  * @description:
  * @date: 2020/6/14
  */
-@NoArgsConstructor
-public class CommonException extends Exception {
+public class CommonException extends RuntimeException {
 
   private HttpStatus httpStatus;
 
   private Integer resultCode;
 
+  private String message;
+
+  public CommonException() {
+  }
+
+  public CommonException(String message) {
+    this.message = message;
+  }
+
+  public CommonException(Integer resultCode, String message) {
+    this.resultCode = resultCode;
+    this.message = message;
+  }
+
   public HttpStatus getHttpStatus() {
     return httpStatus;
+  }
+
+  public void setHttpStatus(HttpStatus httpStatus) {
+    this.httpStatus = httpStatus;
   }
 
   public Integer getResultCode() {
     return resultCode;
   }
 
-  public CommonException(String message) {
-    super(message);
+  public void setResultCode(Integer resultCode) {
+    this.resultCode = resultCode;
   }
 
-  public CommonException(HttpStatus httpStatus, Integer resultCode) {
-    this.httpStatus = httpStatus;
-    this.resultCode = resultCode;
+  @Override
+  public String getMessage() {
+    return message;
+  }
+
+  public void setMessage(String message) {
+    this.message = message;
+  }
+
+  public CommonException(StateCodeEnum stateCodeEnum) {
+    this.resultCode = stateCodeEnum.getCode();
+    this.message = stateCodeEnum.getMessage();
   }
 
   public CommonException(HttpStatus httpStatus, Integer resultCode, String message) {
-    super(message);
     this.httpStatus = httpStatus;
     this.resultCode = resultCode;
-  }
-
-  public CommonException(String message, Integer resultCode) {
-    super(message);
-    this.resultCode = resultCode;
-  }
-
-  public CommonException(String message, HttpStatus httpStatus) {
-    super(message);
-    this.httpStatus = httpStatus;
+    this.message = message;
   }
 }
